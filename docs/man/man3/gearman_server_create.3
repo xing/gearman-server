@@ -1,0 +1,25 @@
+.TH gearman_server_create 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_server_create \- Server Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_server_st *gearman_server_create(gearman_server_st *server);"
+.SH DESCRIPTION
+Initialize a server structure. This cannot fail if the caller supplies a
+server structure.
+.SH PARAMETERS
+.TP
+.BR server
+Caller allocated server structure, or NULL to allocate one.
+.SH "RETURN VALUE"
+Pointer to an allocated server structure if server parameter was
+NULL, or the server parameter pointer if it was not NULL.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

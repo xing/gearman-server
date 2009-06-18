@@ -1,0 +1,17 @@
+.TH gearmand_con_watch 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_con_watch \- Gearmand Connections
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearmand_con_watch(gearman_con_st " *con ", short " events ", void *arg __attribute__ ((unused)));"
+.SH DESCRIPTION
+Callback function used for setting events in libevent.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

@@ -1,0 +1,33 @@
+.TH gearmand_con_create 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_con_create \- Gearmand Connections
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearmand_con_create(gearmand_st " *gearmand ", int " fd ", const char " *host ", const char *port);"
+.SH DESCRIPTION
+Create a new gearmand connection.
+.SH PARAMETERS
+.TP
+.BR gearmand
+Server instance structure previously initialized with
+gearmand_create.
+.TP
+.BR fd
+File descriptor of new connection.
+.TP
+.BR host
+Host of peer connection.
+.TP
+.BR port
+Port of peer connection.
+.SH "RETURN VALUE"
+Pointer to an allocated gearmand structure.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

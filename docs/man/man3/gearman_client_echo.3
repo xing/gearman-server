@@ -1,0 +1,31 @@
+.TH gearman_client_echo 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_echo \- Single Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_client_echo(gearman_client_st " *client ", const void " *workload ", size_t workload_size);"
+.SH DESCRIPTION
+Send data to all job servers to see if they echo it back. This is a test
+function to see if job servers are responding properly.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.TP
+.BR workload
+The workload to ask the server to echo back.
+.TP
+.BR workload_size
+Size of the workload.
+.SH "RETURN VALUE"
+Standard gearman return value.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

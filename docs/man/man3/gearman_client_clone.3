@@ -1,0 +1,27 @@
+.TH gearman_client_clone 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_clone \- Client Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_client_st *gearman_client_clone(gearman_client_st " *client ", gearman_client_st *from);"
+.SH DESCRIPTION
+Clone a client structure.
+.SH PARAMETERS
+.TP
+.BR client
+Caller allocated client structure, or NULL to allocate one.
+.TP
+.BR from
+Client structure to use as a source to clone from.
+.SH "RETURN VALUE"
+Pointer to an allocated client structure if client parameter was
+NULL, or the client parameter pointer if it was not NULL.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

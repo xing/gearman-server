@@ -1,0 +1,26 @@
+.TH gearman_client_do_job_handle 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_do_job_handle \- Single Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "const char *gearman_client_do_job_handle(gearman_client_st *client);"
+.SH DESCRIPTION
+Get the job handle for the running task. This should be used between
+repeated gearman_client_do() and gearman_client_do_high() calls to get
+information.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.SH "RETURN VALUE"
+Pointer to static buffer in library that holds the job handle.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

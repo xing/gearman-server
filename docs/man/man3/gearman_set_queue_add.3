@@ -1,0 +1,17 @@
+.TH gearman_set_queue_add 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_set_queue_add \- Gearman Core Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearman_set_queue_add(gearman_st " *gearman ", gearman_queue_add_fn *add_fn);"
+.SH DESCRIPTION
+Set function to call when jobs need to be stored in the persistent queue.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

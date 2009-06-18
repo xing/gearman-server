@@ -1,0 +1,26 @@
+.TH gearmand_create 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_create \- Gearmand
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearmand_st *gearmand_create(const char " *host ", in_port_t port);"
+.SH DESCRIPTION
+Create a server instance.
+.SH PARAMETERS
+.TP
+.BR host
+Host for the server to listen on.
+.TP
+.BR port
+Port for the server to listen on.
+.SH "RETURN VALUE"
+Pointer to an allocated gearmand structure.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

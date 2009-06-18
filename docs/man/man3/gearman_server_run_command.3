@@ -1,0 +1,26 @@
+.TH gearman_server_run_command 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_server_run_command \- Server Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_server_run_command(gearman_server_con_st " *server_con ", gearman_packet_st *packet);"
+.SH DESCRIPTION
+Process commands for a connection.
+.SH PARAMETERS
+.TP
+.BR server_con
+Server connection that has a packet to process.
+.TP
+.BR packet
+The packet that needs processing.
+.SH "RETURN VALUE"
+Standard gearman return value.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

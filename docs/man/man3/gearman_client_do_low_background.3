@@ -1,0 +1,18 @@
+.TH gearman_client_do_low_background 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_do_low_background \- Single Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_client_do_low_background(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", char *job_handle);"
+.SH DESCRIPTION
+Run a low priority task in the background. See
+gearman_client_do_background() for parameter and return information.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

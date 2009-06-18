@@ -1,0 +1,31 @@
+.TH gearman_client_add_server 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_add_server \- Client Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_client_add_server(gearman_client_st " *client ", const char " *host ", in_port_t port);"
+.SH DESCRIPTION
+Add a job server to a client. This goes into a list of servers than can be
+used to run tasks. No socket I/O happens here, it is just added to a list.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.TP
+.BR host
+Hostname or IP address (IPv4 or IPv6) of the server to add.
+.TP
+.BR port
+Port of the server to add.
+.SH "RETURN VALUE"
+Standard gearman return value.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

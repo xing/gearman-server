@@ -1,0 +1,27 @@
+.TH gearmand_wakeup 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_wakeup \- Gearmand
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearmand_wakeup(gearmand_st " *gearmand ", gearmand_wakeup_t wakeup);"
+.SH DESCRIPTION
+Interrupt a running gearmand server from another thread. You should only
+call this when another thread is currently running gearmand_run() and you
+want to wakeup the server with the given event.
+.SH PARAMETERS
+.TP
+.BR gearmand
+Server instance structure previously initialized with
+gearmand_create.
+.TP
+.BR wakeup
+Wakeup event to send to running gearmand.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

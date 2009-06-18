@@ -1,0 +1,27 @@
+.TH gearman_worker_clone 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_worker_clone \- Worker Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_worker_st *gearman_worker_clone(gearman_worker_st " *worker ", gearman_worker_st *from);"
+.SH DESCRIPTION
+Clone a worker structure.
+.SH PARAMETERS
+.TP
+.BR worker
+Caller allocated worker structure, or NULL to allocate one.
+.TP
+.BR from
+Worker structure to use as a source to clone from.
+.SH "RETURN VALUE"
+Pointer to an allocated worker structure if worker parameter was
+NULL, or the worker parameter pointer if it was not NULL.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

@@ -1,0 +1,41 @@
+.TH gearman_client_job_status 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_job_status \- Single Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_client_job_status(gearman_client_st " *client ", const char " *job_handle ", bool " *is_known ", bool " *is_running ", uint32_t " *numerator ", uint32_t *denominator);"
+.SH DESCRIPTION
+Get the status for a backgound job.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.TP
+.BR job_handle
+The job handle you want status for.
+.TP
+.BR is_known
+Optional parameter to store the known status in.
+.TP
+.BR is_running
+Optional parameter to store the running status in.
+.TP
+.BR numerator
+Optional parameter to store the percent complete
+numerator in.
+.TP
+.BR denominator
+Optional parameter to store the percent complete
+denominator in.
+.SH "RETURN VALUE"
+Standard gearman return value.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

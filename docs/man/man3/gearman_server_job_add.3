@@ -1,0 +1,17 @@
+.TH gearman_server_job_add 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_server_job_add \- Server Job Handling
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_server_job_st *gearman_server_job_add(gearman_server_st " *server ", const char " *function_name ", size_t " function_name_size ", const char " *unique ", size_t " unique_size ", const void " *data ", size_t " data_size ", gearman_job_priority_t " priority ", gearman_server_client_st " *server_client ", gearman_return_t *ret_ptr);"
+.SH DESCRIPTION
+Add a new job to a server instance.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

@@ -1,0 +1,31 @@
+.TH gearman_server_con_add 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_server_con_add \- Server Connection Handling
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_server_con_st *gearman_server_con_add(gearman_server_thread_st " *thread ", int " fd ", void *data);"
+.SH DESCRIPTION
+Add a connection to a server thread. This goes into a list of connections
+that is used later with server_thread_run, no socket I/O happens here.
+.SH PARAMETERS
+.TP
+.BR thread
+Thread structure previously initialized with
+gearman_server_thread_create.
+.TP
+.BR fd
+File descriptor for a newly accepted connection.
+.TP
+.BR data
+Application data pointer.
+.SH "RETURN VALUE"
+Gearman server connection pointer.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

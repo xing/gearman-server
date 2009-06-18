@@ -1,0 +1,185 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Define to 1 if you have the <assert.h> header file. */
+#undef HAVE_ASSERT_H
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <errno.h> header file. */
+#undef HAVE_ERRNO_H
+
+/* Define to 1 if you have the `event_base_free' function. */
+#undef HAVE_EVENT_BASE_FREE
+
+/* Define to 1 if you have the `event_base_get_method' function. */
+#undef HAVE_EVENT_BASE_GET_METHOD
+
+/* Define to 1 if you have the `event_base_new' function. */
+#undef HAVE_EVENT_BASE_NEW
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#undef HAVE_FCNTL_H
+
+/* Define to 1 if you have the <getopt.h> header file. */
+#undef HAVE_GETOPT_H
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define if you have the drizzle library. */
+#undef HAVE_LIBDRIZZLE
+
+/* Define if you have the event library. */
+#undef HAVE_LIBEVENT
+
+/* Define if you have the memcached library. */
+#undef HAVE_LIBMEMCACHED
+
+/* Define to 1 if you have the `mtmalloc' library (-lmtmalloc). */
+#undef HAVE_LIBMTMALLOC
+
+/* Define to 1 if you have the `pthread' library (-lpthread). */
+#undef HAVE_LIBPTHREAD
+
+/* Define to 1 if you have the `tcmalloc' library (-ltcmalloc). */
+#undef HAVE_LIBTCMALLOC
+
+/* Define if you have the uuid library. */
+#undef HAVE_LIBUUID
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the <netinet/tcp.h> header file. */
+#undef HAVE_NETINET_TCP_H
+
+/* Define to 1 if you have the <pthread.h> header file. */
+#undef HAVE_PTHREAD_H
+
+/* Define to 1 if you have the <pwd.h> header file. */
+#undef HAVE_PWD_H
+
+/* Define to 1 if you have the <signal.h> header file. */
+#undef HAVE_SIGNAL_H
+
+/* Define to 1 if you have the <stdarg.h> header file. */
+#undef HAVE_STDARG_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#undef HAVE_STDIO_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/resource.h> header file. */
+#undef HAVE_SYS_RESOURCE_H
+
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#undef HAVE_SYS_SOCKET_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <sys/utsname.h> header file. */
+#undef HAVE_SYS_UTSNAME_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the <uuid/uuid.h> header file. */
+#undef HAVE_UUID_UUID_H
+
+/* Define to 1 if your C compiler doesn't accept -c and -o together. */
+#undef NO_MINUS_C_MINUS_O
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
+#undef TIME_WITH_SYS_TIME
+
+/* Version number of package */
+#undef VERSION
+
+/* Define to 1 if your processor stores words with the most significant byte
+   first (like Motorola and SPARC, unlike Intel and VAX). */
+#undef WORDS_BIGENDIAN
+
+/* Define to 1 if on AIX 3.
+   System headers sometimes define this.
+   We just want to avoid a redefinition error message.  */
+#ifndef _ALL_SOURCE
+# undef _ALL_SOURCE
+#endif
+
+/* Enable GNU extensions on systems that have them.  */
+#ifndef _GNU_SOURCE
+# undef _GNU_SOURCE
+#endif
+
+/* Define to 1 if on MINIX. */
+#undef _MINIX
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+#undef _POSIX_1_SOURCE
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+#undef _POSIX_SOURCE
+
+/* Re-entrant code */
+#undef _REENTRANT
+
+/* Thread safe code */
+#undef _THREAD_SAFE
+
+/* Enable extensions on Solaris.  */
+#ifndef __EXTENSIONS__
+# undef __EXTENSIONS__
+#endif
+#ifndef _POSIX_PTHREAD_SEMANTICS
+# undef _POSIX_PTHREAD_SEMANTICS
+#endif
+#ifndef _TANDEM_SOURCE
+# undef _TANDEM_SOURCE
+#endif
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+#undef size_t
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef ssize_t

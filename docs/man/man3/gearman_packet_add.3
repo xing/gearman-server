@@ -1,0 +1,27 @@
+.TH gearman_packet_add 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_packet_add \- Packet Handling
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_return_t gearman_packet_add(gearman_st " *gearman ", gearman_packet_st " *packet ", gearman_magic_t " magic ", gearman_command_t " command ", const void " *arg ", ...);"
+.SH DESCRIPTION
+Initialize a packet with all arguments. Variable list is NULL terminated
+alternating argument and argument size (size_t) pairs. For example:
+.sp
+ret= gearman_packet_add_args(gearman, packet,
+                             GEARMAN_MAGIC_REQUEST,
+                             GEARMAN_COMMAND_SUBMIT_JOB,
+                             function_name, strlen(function_name) + 1,
+                             unique_string, strlen(unique_string) + 1,
+                             workload, workload_size, NULL);
+.sp
+.nf
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

@@ -1,0 +1,26 @@
+.TH gearman_client_set_task_fn_arg_free 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_set_task_fn_arg_free \- Client Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearman_client_set_task_fn_arg_free(gearman_client_st " *client ", gearman_task_fn_arg_free_fn *free_fn);"
+.SH DESCRIPTION
+Set function to call when tasks are being cleaned up so applications can
+clean up fn_arg.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.TP
+.BR free_fn
+function to call to clean up fn_arg.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

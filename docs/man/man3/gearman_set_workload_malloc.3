@@ -1,0 +1,19 @@
+.TH gearman_set_workload_malloc 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_set_workload_malloc \- Gearman Core Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearman_set_workload_malloc(gearman_st " *gearman ", gearman_malloc_fn " *workload_malloc ", const void *workload_malloc_arg);"
+.SH DESCRIPTION
+Set custom memory allocation function for workloads. Normally gearman uses
+the standard system malloc to allocate memory used with workloads. This
+function is used instead.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

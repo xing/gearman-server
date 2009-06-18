@@ -1,0 +1,17 @@
+.TH gearman_client_add_task_high_background 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_add_task_high_background \- Concurrent Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "gearman_task_st *gearman_client_add_task_high_background(gearman_client_st " *client ", gearman_task_st " *task ", const void " *fn_arg ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", gearman_return_t *ret_ptr);"
+.SH DESCRIPTION
+Add a high priority background task to be run in parallel.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

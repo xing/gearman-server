@@ -1,0 +1,31 @@
+.TH gearmand_set_log 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_set_log \- Gearmand
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearmand_set_log(gearmand_st " *gearmand ", gearmand_log_fn " log_fn ", void " *log_fn_arg ", gearman_verbose_t verbose);"
+.SH DESCRIPTION
+Set logging callback for server instance.
+.SH PARAMETERS
+.TP
+.BR gearmand
+Server instance structure previously initialized with
+gearmand_create.
+.TP
+.BR log_fn
+Function to call when there is a logging message.
+.TP
+.BR log_fn_arg
+Argument to pass into the log callback function.
+.TP
+.BR verbose
+Verbosity level.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

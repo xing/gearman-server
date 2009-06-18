@@ -1,0 +1,52 @@
+.TH gearman_client_do 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_client_do \- Single Task Interface
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void *gearman_client_do(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", size_t " *result_size ", gearman_return_t *ret_ptr);"
+.SH DESCRIPTION
+Run a single task and return an allocated result.
+.SH PARAMETERS
+.TP
+.BR client
+Client structure previously initialized with
+gearman_client_create or gearman_client_clone.
+.TP
+.BR function_name
+The name of the function to run.
+.TP
+.BR unique
+Optional unique job identifier, or NULL for a new UUID.
+.TP
+.BR workload
+The workload to pass to the function when it is run.
+.TP
+.BR workload_size
+Size of the workload.
+.TP
+.BR result_size
+The size of the data being returned.
+.TP
+.BR ret_ptr
+Standard gearman return value. In the case of
+GEARMAN_WORK_DATA or GEARMAN_WORK_STATUS, the
+caller should take any actions and then call this
+function again. This may happen multiple times until a
+GEARMAN_WORK_ERROR, GEARMAN_WORK_FAIL, or GEARMAN_SUCCESS
+(work complete) is returned. For GEARMAN_WORK_DATA,
+the result_size will be set to the intermediate data
+chunk being returned and an allocated data buffer will
+be returned. For GEARMAN_WORK_STATUS, the caller can use
+gearman_client_do_status() to get the current tasks status.
+.SH "RETURN VALUE"
+The result allocated by the library, this needs to be freed when the
+caller is done using it.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

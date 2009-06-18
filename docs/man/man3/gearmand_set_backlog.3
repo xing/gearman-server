@@ -1,0 +1,25 @@
+.TH gearmand_set_backlog 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_set_backlog \- Gearmand
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearmand_set_backlog(gearmand_st " *gearmand ", int backlog);"
+.SH DESCRIPTION
+Set socket backlog for listening connection.
+.SH PARAMETERS
+.TP
+.BR gearmand
+Server instance structure previously initialized with
+gearmand_create.
+.TP
+.BR backlog
+Number of backlog connections to set during listen.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

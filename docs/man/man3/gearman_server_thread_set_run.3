@@ -1,0 +1,28 @@
+.TH gearman_server_thread_set_run 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearman_server_thread_set_run \- Server Thread Handling
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearman_server_thread_set_run(gearman_server_thread_st " *thread ", gearman_server_thread_run_fn " *run_fn ", void *run_arg);"
+.SH DESCRIPTION
+Set thread run callback.
+.SH PARAMETERS
+.TP
+.BR thread
+Thread structure previously initialized with
+gearman_server_thread_create.
+.TP
+.BR run_fn
+Function to call when thread should be run.
+.TP
+.BR run_arg
+Argument to pass along with run_fn.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.

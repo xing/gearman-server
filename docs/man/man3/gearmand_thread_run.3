@@ -1,0 +1,22 @@
+.TH gearmand_thread_run 3 2009-06-01 "Gearman" "Gearman"
+.SH NAME
+gearmand_thread_run \- Gearmand Threads
+.SH SYNOPSIS
+.B #include <libgearman/gearman.h>
+.sp
+.BI "void gearmand_thread_run(gearmand_thread_st *thread);"
+.SH DESCRIPTION
+Run the thread when there are events ready.
+.SH PARAMETERS
+.TP
+.BR thread
+Thread structure previously initialized with
+gearmand_thread_create.
+.SH "SEE ALSO"
+The Gearman homepage: http://www.gearman.org/
+.SH BUGS
+Bugs should be reported at https://bugs.launchpad.net/gearmand
+.SH COPYING
+Copyright (C) 2008 Brian Aker, Eric Day. All rights reserved.
+
+Use and distribution licensed under the BSD license. See the COPYING file in the original source for full text.
