@@ -23,6 +23,5 @@ examples/reverse_client_cb
 examples/reverse_worker
 examples/wc_worker
 gearmand/gearmand
-tests/client_test
-tests/cpp_test
-tests/worker_test
+tests/*_test
+tests/*.res
