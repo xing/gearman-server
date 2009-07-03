@@ -875,11 +875,12 @@ _server_queue_work_data(gearman_server_job_st *server_job,
   for (server_client= server_job->client_list; server_client;
        server_client= server_client->job_next)
   {
-    if (command == GEARMAN_COMMAND_WORK_EXCEPTION &&
-        !(server_client->con->options & GEARMAN_SERVER_CON_EXCEPTIONS))
-    {
-      continue;
-    }
+    // Disable this buggy feature and have WORKER_EXCEPTIONS on by default
+    // if (command == GEARMAN_COMMAND_WORK_EXCEPTION &&
+    //     !(server_client->con->options & GEARMAN_SERVER_CON_EXCEPTIONS))
+    // {
+    //   continue;
+    // }
 
     if (packet->data_size > 0)
     {
