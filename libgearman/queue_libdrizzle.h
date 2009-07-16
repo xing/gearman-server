@@ -14,8 +14,6 @@
 #ifndef __GEARMAN_QUEUE_LIBDRIZZLE_H__
 #define __GEARMAN_QUEUE_LIBDRIZZLE_H__
 
-#include <libgearman/modconf.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,28 +27,33 @@ extern "C" {
 /**
  * Get module configuration options.
  */
-modconf_return_t gearman_queue_libdrizzle_modconf(modconf_st *modconf);
+GEARMAN_API
+gearman_return_t gearman_queue_libdrizzle_conf(gearman_conf_st *conf);
 
 /**
  * Initialize the queue.
  */
+GEARMAN_API
 gearman_return_t gearman_queue_libdrizzle_init(gearman_st *gearman,
-                                               modconf_st *modconf);
+                                               gearman_conf_st *conf);
 
 /**
  * De-initialize the queue.
  */
+GEARMAN_API
 gearman_return_t gearman_queue_libdrizzle_deinit(gearman_st *gearman);
 
 /**
  * Initialize the queue for a gearmand object.
  */
+GEARMAN_API
 gearman_return_t gearmand_queue_libdrizzle_init(gearmand_st *gearmand,
-                                                modconf_st *modconf);
+                                                gearman_conf_st *conf);
 
 /**
  * De-initialize the queue for a gearmand object.
  */
+GEARMAN_API
 gearman_return_t gearmand_queue_libdrizzle_deinit(gearmand_st *gearmand);
 
 /** @} */

@@ -50,6 +50,7 @@ typedef struct
   gearman_job_priority_t priority;
   char **argv;
   gearman_task_st *task;
+  char return_value;
 } gearman_args_st;
 
 /**
@@ -113,7 +114,7 @@ int main(int argc, char *argv[])
   args.priority= GEARMAN_JOB_PRIORITY_NORMAL;
 
   /* Allocate the maximum number of possible functions. */
-  args.function= malloc(sizeof(char *) * argc);
+  args.function= malloc(sizeof(char *) * (size_t)argc);
   if (args.function == NULL)
     GEARMAN_ERROR("malloc:%d", errno)
 
@@ -126,7 +127,7 @@ int main(int argc, char *argv[])
       break;
 
     case 'c':
-      args.count= atoi(optarg);
+      args.count= (uint32_t)atoi(optarg);
       break;
 
     case 'f':
@@ -156,7 +157,7 @@ int main(int argc, char *argv[])
       break;
 
     case 'p':
-      args.port= atoi(optarg);
+      args.port= (in_port_t)atoi(optarg);
       break;
 
     case 'P':
@@ -192,7 +193,7 @@ int main(int argc, char *argv[])
   else
     _client(&args);
 
-  return 0;
+  return args.return_value;
 }
 
 void _client(gearman_args_st *args)
@@ -402,6 +403,7 @@ static gearman_return_t _client_fail(gearman_task_st *task)
 
   fprintf(stderr, "Job failed\n");
 
+  args->return_value= 1;
   return GEARMAN_SUCCESS;
 }
 
@@ -455,6 +457,7 @@ static void *_worker_cb(gearman_job_st *job, void *cb_arg, size_t *result_size,
   char *result= NULL;
   size_t total_size= 0;
   FILE *f;
+  int status;
 
   *ret_ptr= GEARMAN_SUCCESS;
 
@@ -542,8 +545,21 @@ static void *_worker_cb(gearman_job_st *job, void *cb_arg, size_t *result_size,
       close(out_fds[0]);
     }
 
-    if (wait(NULL) == -1)
+    if (wait(&status) == -1)
       GEARMAN_ERROR("wait:%d", errno)
+
+    if (WEXITSTATUS(status) != 0)
+    {
+      if (result != NULL)
+      {
+        *ret_ptr= gearman_job_data(job, result, *result_size);
+        if (*ret_ptr != GEARMAN_SUCCESS)
+          return NULL;
+      }
+
+      *ret_ptr= GEARMAN_WORK_FAIL;
+      return NULL;
+    }
   }
 
   return result;
@@ -575,7 +591,7 @@ void _read_workload(int fd, char **workload, size_t *workload_offset,
     else if (read_ret == 0)
       break;
 
-    *workload_offset += read_ret;
+    *workload_offset += (size_t)read_ret;
   }
 }
 

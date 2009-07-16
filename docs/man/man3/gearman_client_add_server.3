@@ -1,10 +1,10 @@
-.TH gearman_client_add_server 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_add_server 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_add_server \- Client Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_return_t gearman_client_add_server(gearman_client_st " *client ", const char " *host ", in_port_t port);"
+.BI "GEARMAN_APIgearman_return_t gearman_client_add_server(gearman_client_st " *client ", const char " *host ", in_port_t port);"
 .SH DESCRIPTION
 Add a job server to a client. This goes into a list of servers than can be
 used to run tasks. No socket I/O happens here, it is just added to a list.

@@ -1,10 +1,10 @@
-.TH gearman_client_do_status 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_do_status 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_do_status \- Single Task Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "void gearman_client_do_status(gearman_client_st " *client ", uint32_t " *numerator ", uint32_t *denominator);"
+.BI "GEARMAN_APIvoid gearman_client_do_status(gearman_client_st " *client ", uint32_t " *numerator ", uint32_t *denominator);"
 .SH DESCRIPTION
 Get the status for the running task. This should be used between
 repeated gearman_client_do() and gearman_client_do_high() calls to get

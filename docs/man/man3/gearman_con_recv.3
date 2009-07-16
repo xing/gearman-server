@@ -1,10 +1,10 @@
-.TH gearman_con_recv 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_con_recv 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_con_recv \- Connection Handling
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_packet_st *gearman_con_recv(gearman_con_st " *con ", gearman_packet_st " *packet ", gearman_return_t " *ret_ptr ", bool recv_data);"
+.BI "GEARMAN_APIgearman_packet_st *gearman_con_recv(gearman_con_st " *con ", gearman_packet_st " *packet ", gearman_return_t " *ret_ptr ", bool recv_data);"
 .SH DESCRIPTION
 Receive packet from a connection.
 .SH "SEE ALSO"

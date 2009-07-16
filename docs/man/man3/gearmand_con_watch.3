@@ -1,10 +1,10 @@
-.TH gearmand_con_watch 3 2009-06-01 "Gearman" "Gearman"
+.TH gearmand_con_watch 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearmand_con_watch \- Gearmand Connections
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_return_t gearmand_con_watch(gearman_con_st " *con ", short " events ", void *arg __attribute__ ((unused)));"
+.BI "GEARMAN_APIgearman_return_t gearmand_con_watch(gearman_con_st " *con ", short " events ", void *arg);"
 .SH DESCRIPTION
 Callback function used for setting events in libevent.
 .SH "SEE ALSO"

@@ -1,10 +1,10 @@
-.TH gearman_client_add_task 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_add_task 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_add_task \- Concurrent Task Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_task_st *gearman_client_add_task(gearman_client_st " *client ", gearman_task_st " *task ", const void " *fn_arg ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", gearman_return_t *ret_ptr);"
+.BI "GEARMAN_APIgearman_task_st *gearman_client_add_task(gearman_client_st " *client ", gearman_task_st " *task ", const void " *fn_arg ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", gearman_return_t *ret_ptr);"
 .SH DESCRIPTION
 Add a task to be run in parallel.
 .SH "SEE ALSO"

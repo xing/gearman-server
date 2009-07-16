@@ -1,10 +1,10 @@
-.TH gearman_client_do_low 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_do_low 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_do_low \- Single Task Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "void *gearman_client_do_low(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", size_t " *result_size ", gearman_return_t *ret_ptr);"
+.BI "GEARMAN_APIvoid *gearman_client_do_low(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", size_t " *result_size ", gearman_return_t *ret_ptr);"
 .SH DESCRIPTION
 Run a low priority task and return an allocated result. See
 gearman_client_do() for parameter and return information.

@@ -1,10 +1,10 @@
-.TH gearman_client_set_task_fn_arg_free 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_set_task_fn_arg_free 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_set_task_fn_arg_free \- Client Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "void gearman_client_set_task_fn_arg_free(gearman_client_st " *client ", gearman_task_fn_arg_free_fn *free_fn);"
+.BI "GEARMAN_APIvoid gearman_client_set_task_fn_arg_free(gearman_client_st " *client ", gearman_task_fn_arg_free_fn *free_fn);"
 .SH DESCRIPTION
 Set function to call when tasks are being cleaned up so applications can
 clean up fn_arg.
