@@ -48,9 +48,15 @@ DIST_COMMON = README $(am__configure_deps) $(dist_man_MANS) \
 	config/ltmain.sh config/missing
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/extensions.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
-	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/64bit.m4 \
+	$(top_srcdir)/m4/acx_pthread.m4 \
+	$(top_srcdir)/m4/check_gcc_version.m4 \
+	$(top_srcdir)/m4/extensions.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
+	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
+	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/memcached.m4 \
+	$(top_srcdir)/m4/visibility.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -94,6 +100,7 @@ ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_CFLAGS = @AM_CFLAGS@
 AM_CPPFLAGS = @AM_CPPFLAGS@
+AM_CXXFLAGS = @AM_CXXFLAGS@
 AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
@@ -103,6 +110,7 @@ CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CC_VERSION = @CC_VERSION@
 CFLAGS = @CFLAGS@
+CFLAG_VISIBILITY = @CFLAG_VISIBILITY@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -114,26 +122,29 @@ DEFS = @DEFS@
 DEPDIR = @DEPDIR@
 DOXYGEN = @DOXYGEN@
 DSYMUTIL = @DSYMUTIL@
-ECHO = @ECHO@
+DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
-F77 = @F77@
-FFLAGS = @FFLAGS@
+FGREP = @FGREP@
 GEARMAN_LIBRARY_VERSION = @GEARMAN_LIBRARY_VERSION@
 GREP = @GREP@
 HAVE_LIBDRIZZLE = @HAVE_LIBDRIZZLE@
 HAVE_LIBEVENT = @HAVE_LIBEVENT@
 HAVE_LIBMEMCACHED = @HAVE_LIBMEMCACHED@
 HAVE_LIBUUID = @HAVE_LIBUUID@
+HAVE_VISIBILITY = @HAVE_VISIBILITY@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ISAINFO = @ISAINFO@
+LD = @LD@
 LDFLAGS = @LDFLAGS@
+LD_VERSION_SCRIPT = @LD_VERSION_SCRIPT@
 LIBDRIZZLE = @LIBDRIZZLE@
 LIBDRIZZLE_PREFIX = @LIBDRIZZLE_PREFIX@
 LIBEVENT = @LIBEVENT@
@@ -145,6 +156,7 @@ LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIBUUID = @LIBUUID@
 LIBUUID_PREFIX = @LIBUUID_PREFIX@
+LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBDRIZZLE = @LTLIBDRIZZLE@
 LTLIBEVENT = @LTLIBEVENT@
@@ -152,10 +164,16 @@ LTLIBMEMCACHED = @LTLIBMEMCACHED@
 LTLIBOBJS = @LTLIBOBJS@
 LTLIBUUID = @LTLIBUUID@
 MAKEINFO = @MAKEINFO@
+MEMCACHED_BINARY = @MEMCACHED_BINARY@
 MKDIR_P = @MKDIR_P@
+NM = @NM@
 NMEDIT = @NMEDIT@
+NO_CONVERSION = @NO_CONVERSION@
 NO_REDUNDANT_DECLS = @NO_REDUNDANT_DECLS@
+OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
+OTOOL = @OTOOL@
+OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -164,6 +182,9 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
+PTHREAD_CC = @PTHREAD_CC@
+PTHREAD_CFLAGS = @PTHREAD_CFLAGS@
+PTHREAD_LIBS = @PTHREAD_LIBS@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
@@ -176,7 +197,8 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
-ac_ct_F77 = @ac_ct_F77@
+ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
+acx_pthread_config = @acx_pthread_config@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -207,6 +229,7 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
+lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -245,6 +268,8 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_client_set_options.3 \
 	docs/man/man3/gearman_client_data.3 \
 	docs/man/man3/gearman_client_set_data.3 \
+	docs/man/man3/gearman_client_set_workload_malloc.3 \
+	docs/man/man3/gearman_client_set_workload_free.3 \
 	docs/man/man3/gearman_client_set_task_fn_arg_free.3 \
 	docs/man/man3/gearman_client_add_server.3 \
 	docs/man/man3/gearman_client_add_servers.3 \
@@ -276,6 +301,19 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_client_clear_fn.3 \
 	docs/man/man3/gearman_client_run_tasks.3 \
 	docs/man/man3/gearman_parse_servers.3 \
+	docs/man/man3/gearman_conf_create.3 \
+	docs/man/man3/gearman_conf_free.3 \
+	docs/man/man3/gearman_conf_return.3 \
+	docs/man/man3/gearman_conf_error.3 \
+	docs/man/man3/gearman_conf_errno.3 \
+	docs/man/man3/gearman_conf_set_options.3 \
+	docs/man/man3/gearman_conf_parse_args.3 \
+	docs/man/man3/gearman_conf_usage.3 \
+	docs/man/man3/gearman_conf_module_create.3 \
+	docs/man/man3/gearman_conf_module_free.3 \
+	docs/man/man3/gearman_conf_module_find.3 \
+	docs/man/man3/gearman_conf_module_add_option.3 \
+	docs/man/man3/gearman_conf_module_value.3 \
 	docs/man/man3/gearman_con_add.3 \
 	docs/man/man3/gearman_con_create.3 \
 	docs/man/man3/gearman_con_clone.3 \
@@ -294,11 +332,21 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_con_send_all.3 \
 	docs/man/man3/gearman_con_recv.3 \
 	docs/man/man3/gearman_con_recv_data.3 \
+	docs/man/man3/gearman_con_read.3 \
 	docs/man/man3/gearman_con_wait.3 \
 	docs/man/man3/gearman_con_set_events.3 \
 	docs/man/man3/gearman_con_set_revents.3 \
 	docs/man/man3/gearman_con_ready.3 \
 	docs/man/man3/gearman_con_echo.3 \
+	docs/man/man3/gearman_con_protocol_data.3 \
+	docs/man/man3/gearman_con_set_protocol_data.3 \
+	docs/man/man3/gearman_con_set_protocol_data_free_fn.3 \
+	docs/man/man3/gearman_con_set_recv_fn.3 \
+	docs/man/man3/gearman_con_set_recv_data_fn.3 \
+	docs/man/man3/gearman_con_set_send_fn.3 \
+	docs/man/man3/gearman_con_set_send_data_fn.3 \
+	docs/man/man3/gearman_con_set_packet_pack_fn.3 \
+	docs/man/man3/gearman_con_set_packet_unpack_fn.3 \
 	docs/man/man3/gearmand_con_create.3 \
 	docs/man/man3/gearmand_con_free.3 \
 	docs/man/man3/gearmand_con_check_queue.3 \
@@ -308,6 +356,7 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearmand_set_backlog.3 \
 	docs/man/man3/gearmand_set_threads.3 \
 	docs/man/man3/gearmand_set_log.3 \
+	docs/man/man3/gearmand_port_add.3 \
 	docs/man/man3/gearmand_run.3 \
 	docs/man/man3/gearmand_wakeup.3 \
 	docs/man/man3/gearmand_thread_create.3 \
@@ -316,6 +365,7 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearmand_thread_run.3 \
 	docs/man/man3/gearman_version.3 \
 	docs/man/man3/gearman_bugreport.3 \
+	docs/man/man3/gearman_verbose_name.3 \
 	docs/man/man3/gearman_create.3 \
 	docs/man/man3/gearman_clone.3 \
 	docs/man/man3/gearman_free.3 \
@@ -353,14 +403,18 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_packet_add_arg.3 \
 	docs/man/man3/gearman_packet_pack_header.3 \
 	docs/man/man3/gearman_packet_unpack_header.3 \
-	docs/man/man3/gearman_packet_parse.3 \
+	docs/man/man3/gearman_packet_pack.3 \
+	docs/man/man3/gearman_packet_unpack.3 \
 	docs/man/man3/gearman_packet_take_data.3 \
-	docs/man/man3/gearman_queue_libdrizzle_modconf.3 \
+	docs/man/man3/gearman_protocol_http_conf.3 \
+	docs/man/man3/gearmand_protocol_http_init.3 \
+	docs/man/man3/gearmand_protocol_http_deinit.3 \
+	docs/man/man3/gearman_queue_libdrizzle_conf.3 \
 	docs/man/man3/gearman_queue_libdrizzle_init.3 \
 	docs/man/man3/gearman_queue_libdrizzle_deinit.3 \
 	docs/man/man3/gearmand_queue_libdrizzle_init.3 \
 	docs/man/man3/gearmand_queue_libdrizzle_deinit.3 \
-	docs/man/man3/gearman_queue_libmemcached_modconf.3 \
+	docs/man/man3/gearman_queue_libmemcached_conf.3 \
 	docs/man/man3/gearman_queue_libmemcached_init.3 \
 	docs/man/man3/gearman_queue_libmemcached_deinit.3 \
 	docs/man/man3/gearmand_queue_libmemcached_init.3 \
@@ -371,6 +425,7 @@ dist_man_MANS = docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_server_con_add.3 \
 	docs/man/man3/gearman_server_con_create.3 \
 	docs/man/man3/gearman_server_con_free.3 \
+	docs/man/man3/gearman_server_con_con.3 \
 	docs/man/man3/gearman_server_con_data.3 \
 	docs/man/man3/gearman_server_con_set_data.3 \
 	docs/man/man3/gearman_server_con_host.3 \

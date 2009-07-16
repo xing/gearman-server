@@ -45,9 +45,15 @@ subdir = libgearman
 DIST_COMMON = $(am__dist_libgearmaninclude_HEADERS_DIST) \
 	$(noinst_HEADERS) $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/extensions.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
-	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/64bit.m4 \
+	$(top_srcdir)/m4/acx_pthread.m4 \
+	$(top_srcdir)/m4/check_gcc_version.m4 \
+	$(top_srcdir)/m4/extensions.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
+	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
+	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/memcached.m4 \
+	$(top_srcdir)/m4/visibility.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -67,24 +73,32 @@ am__DEPENDENCIES_1 =
 libgearman_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
-am__libgearman_la_SOURCES_DIST = queue_libdrizzle.c \
-	queue_libmemcached.c client.c con.c gearman.c gearmand.c \
-	gearmand_thread.c gearmand_con.c job.c packet.c server.c \
-	server_client.c server_con.c server_job.c server_function.c \
-	server_packet.c server_thread.c server_worker.c task.c \
-	worker.c modconf.c modconf_module.c
-@HAVE_LIBDRIZZLE_TRUE@am__objects_1 = queue_libdrizzle.lo
-@HAVE_LIBMEMCACHED_TRUE@am__objects_2 = queue_libmemcached.lo
-am_libgearman_la_OBJECTS = $(am__objects_1) $(am__objects_2) client.lo \
-	con.lo gearman.lo gearmand.lo gearmand_thread.lo \
-	gearmand_con.lo job.lo packet.lo server.lo server_client.lo \
-	server_con.lo server_job.lo server_function.lo \
-	server_packet.lo server_thread.lo server_worker.lo task.lo \
-	worker.lo modconf.lo modconf_module.lo
+am__libgearman_la_SOURCES_DIST = client.c conf.c conf_module.c conn.c \
+	gearman.c gearmand.c gearmand_thread.c gearmand_con.c job.c \
+	packet.c server.c server_client.c server_con.c server_job.c \
+	server_function.c server_packet.c server_thread.c \
+	server_worker.c task.c worker.c queue_libdrizzle.c \
+	queue_libmemcached.c protocol_http.c
+@HAVE_LIBDRIZZLE_TRUE@am__objects_1 =  \
+@HAVE_LIBDRIZZLE_TRUE@	libgearman_la-queue_libdrizzle.lo
+@HAVE_LIBMEMCACHED_TRUE@am__objects_2 =  \
+@HAVE_LIBMEMCACHED_TRUE@	libgearman_la-queue_libmemcached.lo
+am_libgearman_la_OBJECTS = libgearman_la-client.lo \
+	libgearman_la-conf.lo libgearman_la-conf_module.lo \
+	libgearman_la-conn.lo libgearman_la-gearman.lo \
+	libgearman_la-gearmand.lo libgearman_la-gearmand_thread.lo \
+	libgearman_la-gearmand_con.lo libgearman_la-job.lo \
+	libgearman_la-packet.lo libgearman_la-server.lo \
+	libgearman_la-server_client.lo libgearman_la-server_con.lo \
+	libgearman_la-server_job.lo libgearman_la-server_function.lo \
+	libgearman_la-server_packet.lo libgearman_la-server_thread.lo \
+	libgearman_la-server_worker.lo libgearman_la-task.lo \
+	libgearman_la-worker.lo $(am__objects_1) $(am__objects_2) \
+	libgearman_la-protocol_http.lo
 libgearman_la_OBJECTS = $(am_libgearman_la_OBJECTS)
 libgearman_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(libgearman_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libgearman_la_CFLAGS) \
+	$(CFLAGS) $(libgearman_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = 
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -99,13 +113,13 @@ LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libgearman_la_SOURCES)
 DIST_SOURCES = $(am__libgearman_la_SOURCES_DIST)
-am__dist_libgearmaninclude_HEADERS_DIST = queue_libdrizzle.h \
-	queue_libmemcached.h client.h con.h constants.h gearman.h \
-	gearmand.h gearmand_thread.h gearmand_con.h job.h packet.h \
-	server.h server_client.h server_con.h server_job.h \
-	server_function.h server_packet.h server_thread.h \
-	server_worker.h structs.h task.h worker.h modconf.h \
-	modconf_module.h modconf_constants.h modconf_structs.h
+am__dist_libgearmaninclude_HEADERS_DIST = client.h conf.h \
+	conf_module.h conn.h constants.h gearman.h gearmand.h \
+	gearmand_thread.h gearmand_con.h job.h packet.h server.h \
+	server_client.h server_con.h server_job.h server_function.h \
+	server_packet.h server_thread.h server_worker.h structs.h \
+	task.h visibility.h worker.h queue_libdrizzle.h \
+	queue_libmemcached.h protocol_http.h
 dist_libgearmanincludeHEADERS_INSTALL = $(INSTALL_HEADER)
 HEADERS = $(dist_libgearmaninclude_HEADERS) $(noinst_HEADERS)
 ETAGS = etags
@@ -115,6 +129,7 @@ ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_CFLAGS = @AM_CFLAGS@
 AM_CPPFLAGS = @AM_CPPFLAGS@
+AM_CXXFLAGS = @AM_CXXFLAGS@
 AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
@@ -124,6 +139,7 @@ CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CC_VERSION = @CC_VERSION@
 CFLAGS = @CFLAGS@
+CFLAG_VISIBILITY = @CFLAG_VISIBILITY@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -135,26 +151,29 @@ DEFS = @DEFS@
 DEPDIR = @DEPDIR@
 DOXYGEN = @DOXYGEN@
 DSYMUTIL = @DSYMUTIL@
-ECHO = @ECHO@
+DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
-F77 = @F77@
-FFLAGS = @FFLAGS@
+FGREP = @FGREP@
 GEARMAN_LIBRARY_VERSION = @GEARMAN_LIBRARY_VERSION@
 GREP = @GREP@
 HAVE_LIBDRIZZLE = @HAVE_LIBDRIZZLE@
 HAVE_LIBEVENT = @HAVE_LIBEVENT@
 HAVE_LIBMEMCACHED = @HAVE_LIBMEMCACHED@
 HAVE_LIBUUID = @HAVE_LIBUUID@
+HAVE_VISIBILITY = @HAVE_VISIBILITY@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ISAINFO = @ISAINFO@
+LD = @LD@
 LDFLAGS = @LDFLAGS@
+LD_VERSION_SCRIPT = @LD_VERSION_SCRIPT@
 LIBDRIZZLE = @LIBDRIZZLE@
 LIBDRIZZLE_PREFIX = @LIBDRIZZLE_PREFIX@
 LIBEVENT = @LIBEVENT@
@@ -166,6 +185,7 @@ LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIBUUID = @LIBUUID@
 LIBUUID_PREFIX = @LIBUUID_PREFIX@
+LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBDRIZZLE = @LTLIBDRIZZLE@
 LTLIBEVENT = @LTLIBEVENT@
@@ -173,10 +193,16 @@ LTLIBMEMCACHED = @LTLIBMEMCACHED@
 LTLIBOBJS = @LTLIBOBJS@
 LTLIBUUID = @LTLIBUUID@
 MAKEINFO = @MAKEINFO@
+MEMCACHED_BINARY = @MEMCACHED_BINARY@
 MKDIR_P = @MKDIR_P@
+NM = @NM@
 NMEDIT = @NMEDIT@
+NO_CONVERSION = @NO_CONVERSION@
 NO_REDUNDANT_DECLS = @NO_REDUNDANT_DECLS@
+OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
+OTOOL = @OTOOL@
+OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -185,6 +211,9 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
+PTHREAD_CC = @PTHREAD_CC@
+PTHREAD_CFLAGS = @PTHREAD_CFLAGS@
+PTHREAD_LIBS = @PTHREAD_LIBS@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
@@ -197,7 +226,8 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
-ac_ct_F77 = @ac_ct_F77@
+ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
+acx_pthread_config = @acx_pthread_config@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -228,6 +258,7 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
+lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -253,15 +284,15 @@ top_srcdir = @top_srcdir@
 lib_LTLIBRARIES = libgearman.la
 libgearmanincludedir = ${includedir}/libgearman
 dist_libgearmaninclude_HEADERS = \
-	$(QUEUE_LIBDRIZZLE_H) \
-	$(QUEUE_LIBMEMCACHED_H) \
 	client.h \
-	con.h \
+	conf.h \
+	conf_module.h \
+	conn.h \
 	constants.h \
 	gearman.h \
-        gearmand.h \
-        gearmand_thread.h \
-        gearmand_con.h \
+	gearmand.h \
+	gearmand_thread.h \
+	gearmand_con.h \
 	job.h \
 	packet.h \
 	server.h \
@@ -274,21 +305,20 @@ dist_libgearmaninclude_HEADERS = \
 	server_worker.h \
 	structs.h \
 	task.h \
+	visibility.h \
 	worker.h \
-	modconf.h \
-	modconf_module.h \
-	modconf_constants.h \
-	modconf_structs.h
+	$(QUEUE_LIBDRIZZLE_H) \
+	$(QUEUE_LIBMEMCACHED_H) \
+	protocol_http.h
 
 noinst_HEADERS = \
-	common.h \
-	modconf_common.h
+	common.h
 
 libgearman_la_SOURCES = \
-	$(QUEUE_LIBDRIZZLE_C) \
-	$(QUEUE_LIBMEMCACHED_C) \
 	client.c \
-	con.c \
+	conf.c \
+	conf_module.c \
+	conn.c \
 	gearman.c \
 	gearmand.c \
 	gearmand_thread.c \
@@ -305,16 +335,21 @@ libgearman_la_SOURCES = \
 	server_worker.c \
 	task.c \
 	worker.c \
-	modconf.c \
-	modconf_module.c
+	$(QUEUE_LIBDRIZZLE_C) \
+	$(QUEUE_LIBMEMCACHED_C) \
+	protocol_http.c
 
-libgearman_la_LDFLAGS = -version-info $(GEARMAN_LIBRARY_VERSION)
+libgearman_la_CFLAGS = ${AM_CFLAGS} -DBUILDING_LIBGEARMAN
+libgearman_la_LDFLAGS = -version-info $(GEARMAN_LIBRARY_VERSION) \
+	$(LD_VERSION_SCRIPT)
+
 libgearman_la_LIBADD = \
 	$(LTLIBEVENT) \
 	$(LTLIBUUID) \
 	$(LTLIBDRIZZLE) \
 	$(LTLIBMEMCACHED)
 
+EXTRA_DIST = libgearman.ver
 all: all-am
 
 .SUFFIXES:
@@ -384,28 +419,29 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/client.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/con.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gearman.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gearmand.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gearmand_con.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gearmand_thread.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/job.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/modconf.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/modconf_module.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/packet.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/queue_libdrizzle.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/queue_libmemcached.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_client.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_con.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_function.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_job.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_packet.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_thread.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server_worker.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/task.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/worker.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-client.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-conf.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-conf_module.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-conn.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-gearman.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-gearmand.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-gearmand_con.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-gearmand_thread.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-job.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-packet.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-protocol_http.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-queue_libdrizzle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-queue_libmemcached.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_client.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_con.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_function.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_job.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_packet.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_thread.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-server_worker.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-task.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgearman_la-worker.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -430,6 +466,167 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
+
+libgearman_la-client.lo: client.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-client.lo -MD -MP -MF $(DEPDIR)/libgearman_la-client.Tpo -c -o libgearman_la-client.lo `test -f 'client.c' || echo '$(srcdir)/'`client.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-client.Tpo $(DEPDIR)/libgearman_la-client.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='client.c' object='libgearman_la-client.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-client.lo `test -f 'client.c' || echo '$(srcdir)/'`client.c
+
+libgearman_la-conf.lo: conf.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-conf.lo -MD -MP -MF $(DEPDIR)/libgearman_la-conf.Tpo -c -o libgearman_la-conf.lo `test -f 'conf.c' || echo '$(srcdir)/'`conf.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-conf.Tpo $(DEPDIR)/libgearman_la-conf.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='conf.c' object='libgearman_la-conf.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-conf.lo `test -f 'conf.c' || echo '$(srcdir)/'`conf.c
+
+libgearman_la-conf_module.lo: conf_module.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-conf_module.lo -MD -MP -MF $(DEPDIR)/libgearman_la-conf_module.Tpo -c -o libgearman_la-conf_module.lo `test -f 'conf_module.c' || echo '$(srcdir)/'`conf_module.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-conf_module.Tpo $(DEPDIR)/libgearman_la-conf_module.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='conf_module.c' object='libgearman_la-conf_module.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-conf_module.lo `test -f 'conf_module.c' || echo '$(srcdir)/'`conf_module.c
+
+libgearman_la-conn.lo: conn.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-conn.lo -MD -MP -MF $(DEPDIR)/libgearman_la-conn.Tpo -c -o libgearman_la-conn.lo `test -f 'conn.c' || echo '$(srcdir)/'`conn.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-conn.Tpo $(DEPDIR)/libgearman_la-conn.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='conn.c' object='libgearman_la-conn.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-conn.lo `test -f 'conn.c' || echo '$(srcdir)/'`conn.c
+
+libgearman_la-gearman.lo: gearman.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-gearman.lo -MD -MP -MF $(DEPDIR)/libgearman_la-gearman.Tpo -c -o libgearman_la-gearman.lo `test -f 'gearman.c' || echo '$(srcdir)/'`gearman.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-gearman.Tpo $(DEPDIR)/libgearman_la-gearman.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gearman.c' object='libgearman_la-gearman.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-gearman.lo `test -f 'gearman.c' || echo '$(srcdir)/'`gearman.c
+
+libgearman_la-gearmand.lo: gearmand.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-gearmand.lo -MD -MP -MF $(DEPDIR)/libgearman_la-gearmand.Tpo -c -o libgearman_la-gearmand.lo `test -f 'gearmand.c' || echo '$(srcdir)/'`gearmand.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-gearmand.Tpo $(DEPDIR)/libgearman_la-gearmand.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gearmand.c' object='libgearman_la-gearmand.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-gearmand.lo `test -f 'gearmand.c' || echo '$(srcdir)/'`gearmand.c
+
+libgearman_la-gearmand_thread.lo: gearmand_thread.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-gearmand_thread.lo -MD -MP -MF $(DEPDIR)/libgearman_la-gearmand_thread.Tpo -c -o libgearman_la-gearmand_thread.lo `test -f 'gearmand_thread.c' || echo '$(srcdir)/'`gearmand_thread.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-gearmand_thread.Tpo $(DEPDIR)/libgearman_la-gearmand_thread.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gearmand_thread.c' object='libgearman_la-gearmand_thread.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-gearmand_thread.lo `test -f 'gearmand_thread.c' || echo '$(srcdir)/'`gearmand_thread.c
+
+libgearman_la-gearmand_con.lo: gearmand_con.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-gearmand_con.lo -MD -MP -MF $(DEPDIR)/libgearman_la-gearmand_con.Tpo -c -o libgearman_la-gearmand_con.lo `test -f 'gearmand_con.c' || echo '$(srcdir)/'`gearmand_con.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-gearmand_con.Tpo $(DEPDIR)/libgearman_la-gearmand_con.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gearmand_con.c' object='libgearman_la-gearmand_con.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-gearmand_con.lo `test -f 'gearmand_con.c' || echo '$(srcdir)/'`gearmand_con.c
+
+libgearman_la-job.lo: job.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-job.lo -MD -MP -MF $(DEPDIR)/libgearman_la-job.Tpo -c -o libgearman_la-job.lo `test -f 'job.c' || echo '$(srcdir)/'`job.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-job.Tpo $(DEPDIR)/libgearman_la-job.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='job.c' object='libgearman_la-job.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-job.lo `test -f 'job.c' || echo '$(srcdir)/'`job.c
+
+libgearman_la-packet.lo: packet.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-packet.lo -MD -MP -MF $(DEPDIR)/libgearman_la-packet.Tpo -c -o libgearman_la-packet.lo `test -f 'packet.c' || echo '$(srcdir)/'`packet.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-packet.Tpo $(DEPDIR)/libgearman_la-packet.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='packet.c' object='libgearman_la-packet.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-packet.lo `test -f 'packet.c' || echo '$(srcdir)/'`packet.c
+
+libgearman_la-server.lo: server.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server.Tpo -c -o libgearman_la-server.lo `test -f 'server.c' || echo '$(srcdir)/'`server.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server.Tpo $(DEPDIR)/libgearman_la-server.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server.c' object='libgearman_la-server.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server.lo `test -f 'server.c' || echo '$(srcdir)/'`server.c
+
+libgearman_la-server_client.lo: server_client.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_client.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_client.Tpo -c -o libgearman_la-server_client.lo `test -f 'server_client.c' || echo '$(srcdir)/'`server_client.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_client.Tpo $(DEPDIR)/libgearman_la-server_client.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_client.c' object='libgearman_la-server_client.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_client.lo `test -f 'server_client.c' || echo '$(srcdir)/'`server_client.c
+
+libgearman_la-server_con.lo: server_con.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_con.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_con.Tpo -c -o libgearman_la-server_con.lo `test -f 'server_con.c' || echo '$(srcdir)/'`server_con.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_con.Tpo $(DEPDIR)/libgearman_la-server_con.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_con.c' object='libgearman_la-server_con.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_con.lo `test -f 'server_con.c' || echo '$(srcdir)/'`server_con.c
+
+libgearman_la-server_job.lo: server_job.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_job.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_job.Tpo -c -o libgearman_la-server_job.lo `test -f 'server_job.c' || echo '$(srcdir)/'`server_job.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_job.Tpo $(DEPDIR)/libgearman_la-server_job.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_job.c' object='libgearman_la-server_job.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_job.lo `test -f 'server_job.c' || echo '$(srcdir)/'`server_job.c
+
+libgearman_la-server_function.lo: server_function.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_function.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_function.Tpo -c -o libgearman_la-server_function.lo `test -f 'server_function.c' || echo '$(srcdir)/'`server_function.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_function.Tpo $(DEPDIR)/libgearman_la-server_function.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_function.c' object='libgearman_la-server_function.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_function.lo `test -f 'server_function.c' || echo '$(srcdir)/'`server_function.c
+
+libgearman_la-server_packet.lo: server_packet.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_packet.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_packet.Tpo -c -o libgearman_la-server_packet.lo `test -f 'server_packet.c' || echo '$(srcdir)/'`server_packet.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_packet.Tpo $(DEPDIR)/libgearman_la-server_packet.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_packet.c' object='libgearman_la-server_packet.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_packet.lo `test -f 'server_packet.c' || echo '$(srcdir)/'`server_packet.c
+
+libgearman_la-server_thread.lo: server_thread.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_thread.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_thread.Tpo -c -o libgearman_la-server_thread.lo `test -f 'server_thread.c' || echo '$(srcdir)/'`server_thread.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_thread.Tpo $(DEPDIR)/libgearman_la-server_thread.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_thread.c' object='libgearman_la-server_thread.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_thread.lo `test -f 'server_thread.c' || echo '$(srcdir)/'`server_thread.c
+
+libgearman_la-server_worker.lo: server_worker.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-server_worker.lo -MD -MP -MF $(DEPDIR)/libgearman_la-server_worker.Tpo -c -o libgearman_la-server_worker.lo `test -f 'server_worker.c' || echo '$(srcdir)/'`server_worker.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-server_worker.Tpo $(DEPDIR)/libgearman_la-server_worker.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server_worker.c' object='libgearman_la-server_worker.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-server_worker.lo `test -f 'server_worker.c' || echo '$(srcdir)/'`server_worker.c
+
+libgearman_la-task.lo: task.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-task.lo -MD -MP -MF $(DEPDIR)/libgearman_la-task.Tpo -c -o libgearman_la-task.lo `test -f 'task.c' || echo '$(srcdir)/'`task.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-task.Tpo $(DEPDIR)/libgearman_la-task.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='task.c' object='libgearman_la-task.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-task.lo `test -f 'task.c' || echo '$(srcdir)/'`task.c
+
+libgearman_la-worker.lo: worker.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-worker.lo -MD -MP -MF $(DEPDIR)/libgearman_la-worker.Tpo -c -o libgearman_la-worker.lo `test -f 'worker.c' || echo '$(srcdir)/'`worker.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-worker.Tpo $(DEPDIR)/libgearman_la-worker.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='worker.c' object='libgearman_la-worker.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-worker.lo `test -f 'worker.c' || echo '$(srcdir)/'`worker.c
+
+libgearman_la-queue_libdrizzle.lo: queue_libdrizzle.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-queue_libdrizzle.lo -MD -MP -MF $(DEPDIR)/libgearman_la-queue_libdrizzle.Tpo -c -o libgearman_la-queue_libdrizzle.lo `test -f 'queue_libdrizzle.c' || echo '$(srcdir)/'`queue_libdrizzle.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-queue_libdrizzle.Tpo $(DEPDIR)/libgearman_la-queue_libdrizzle.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='queue_libdrizzle.c' object='libgearman_la-queue_libdrizzle.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-queue_libdrizzle.lo `test -f 'queue_libdrizzle.c' || echo '$(srcdir)/'`queue_libdrizzle.c
+
+libgearman_la-queue_libmemcached.lo: queue_libmemcached.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-queue_libmemcached.lo -MD -MP -MF $(DEPDIR)/libgearman_la-queue_libmemcached.Tpo -c -o libgearman_la-queue_libmemcached.lo `test -f 'queue_libmemcached.c' || echo '$(srcdir)/'`queue_libmemcached.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-queue_libmemcached.Tpo $(DEPDIR)/libgearman_la-queue_libmemcached.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='queue_libmemcached.c' object='libgearman_la-queue_libmemcached.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-queue_libmemcached.lo `test -f 'queue_libmemcached.c' || echo '$(srcdir)/'`queue_libmemcached.c
+
+libgearman_la-protocol_http.lo: protocol_http.c
+@am__fastdepCC_TRUE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -MT libgearman_la-protocol_http.lo -MD -MP -MF $(DEPDIR)/libgearman_la-protocol_http.Tpo -c -o libgearman_la-protocol_http.lo `test -f 'protocol_http.c' || echo '$(srcdir)/'`protocol_http.c
+@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/libgearman_la-protocol_http.Tpo $(DEPDIR)/libgearman_la-protocol_http.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='protocol_http.c' object='libgearman_la-protocol_http.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgearman_la_CFLAGS) $(CFLAGS) -c -o libgearman_la-protocol_http.lo `test -f 'protocol_http.c' || echo '$(srcdir)/'`protocol_http.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

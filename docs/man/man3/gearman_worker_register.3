@@ -1,10 +1,10 @@
-.TH gearman_worker_register 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_worker_register 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_worker_register \- Worker Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_return_t gearman_worker_register(gearman_worker_st " *worker ", const char " *function_name ", uint32_t timeout);"
+.BI "GEARMAN_APIgearman_return_t gearman_worker_register(gearman_worker_st " *worker ", const char " *function_name ", uint32_t timeout);"
 .SH DESCRIPTION
 Register function with job servers with an optional timeout. The timeout
 specifies how many seconds the server will wait before marking a job as

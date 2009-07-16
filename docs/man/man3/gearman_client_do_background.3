@@ -1,10 +1,10 @@
-.TH gearman_client_do_background 3 2009-06-01 "Gearman" "Gearman"
+.TH gearman_client_do_background 3 2009-07-02 "Gearman" "Gearman"
 .SH NAME
 gearman_client_do_background \- Single Task Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "gearman_return_t gearman_client_do_background(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", char *job_handle);"
+.BI "GEARMAN_APIgearman_return_t gearman_client_do_background(gearman_client_st " *client ", const char " *function_name ", const char " *unique ", const void " *workload ", size_t " workload_size ", char *job_handle);"
 .SH DESCRIPTION
 Run a task in the background.
 .SH PARAMETERS

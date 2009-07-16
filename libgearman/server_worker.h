@@ -29,24 +29,25 @@ extern "C" {
 /**
  * Add a new worker to a server instance.
  */
+GEARMAN_API
 gearman_server_worker_st *
-gearman_server_worker_add(gearman_server_con_st *server_con,
-                          const char *function_name,
-                          size_t function_name_size,
-                          uint32_t timeout);
+gearman_server_worker_add(gearman_server_con_st *con, const char *function_name,
+                          size_t function_name_size, uint32_t timeout);
 
 /**
  * Initialize a server worker structure.
  */
+GEARMAN_API
 gearman_server_worker_st *
-gearman_server_worker_create(gearman_server_con_st *server_con,
-                             gearman_server_function_st *server_function,
-                             gearman_server_worker_st *server_worker);
+gearman_server_worker_create(gearman_server_con_st *con,
+                             gearman_server_function_st *function,
+                             gearman_server_worker_st *worker);
 
 /**
  * Free a server worker structure.
  */
-void gearman_server_worker_free(gearman_server_worker_st *server_worker);
+GEARMAN_API
+void gearman_server_worker_free(gearman_server_worker_st *worker);
 
 /** @} */
 

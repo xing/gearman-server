@@ -8,6 +8,8 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_client_set_options.3 \
 	docs/man/man3/gearman_client_data.3 \
 	docs/man/man3/gearman_client_set_data.3 \
+	docs/man/man3/gearman_client_set_workload_malloc.3 \
+	docs/man/man3/gearman_client_set_workload_free.3 \
 	docs/man/man3/gearman_client_set_task_fn_arg_free.3 \
 	docs/man/man3/gearman_client_add_server.3 \
 	docs/man/man3/gearman_client_add_servers.3 \
@@ -39,6 +41,19 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_client_clear_fn.3 \
 	docs/man/man3/gearman_client_run_tasks.3 \
 	docs/man/man3/gearman_parse_servers.3 \
+	docs/man/man3/gearman_conf_create.3 \
+	docs/man/man3/gearman_conf_free.3 \
+	docs/man/man3/gearman_conf_return.3 \
+	docs/man/man3/gearman_conf_error.3 \
+	docs/man/man3/gearman_conf_errno.3 \
+	docs/man/man3/gearman_conf_set_options.3 \
+	docs/man/man3/gearman_conf_parse_args.3 \
+	docs/man/man3/gearman_conf_usage.3 \
+	docs/man/man3/gearman_conf_module_create.3 \
+	docs/man/man3/gearman_conf_module_free.3 \
+	docs/man/man3/gearman_conf_module_find.3 \
+	docs/man/man3/gearman_conf_module_add_option.3 \
+	docs/man/man3/gearman_conf_module_value.3 \
 	docs/man/man3/gearman_con_add.3 \
 	docs/man/man3/gearman_con_create.3 \
 	docs/man/man3/gearman_con_clone.3 \
@@ -57,11 +72,21 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_con_send_all.3 \
 	docs/man/man3/gearman_con_recv.3 \
 	docs/man/man3/gearman_con_recv_data.3 \
+	docs/man/man3/gearman_con_read.3 \
 	docs/man/man3/gearman_con_wait.3 \
 	docs/man/man3/gearman_con_set_events.3 \
 	docs/man/man3/gearman_con_set_revents.3 \
 	docs/man/man3/gearman_con_ready.3 \
 	docs/man/man3/gearman_con_echo.3 \
+	docs/man/man3/gearman_con_protocol_data.3 \
+	docs/man/man3/gearman_con_set_protocol_data.3 \
+	docs/man/man3/gearman_con_set_protocol_data_free_fn.3 \
+	docs/man/man3/gearman_con_set_recv_fn.3 \
+	docs/man/man3/gearman_con_set_recv_data_fn.3 \
+	docs/man/man3/gearman_con_set_send_fn.3 \
+	docs/man/man3/gearman_con_set_send_data_fn.3 \
+	docs/man/man3/gearman_con_set_packet_pack_fn.3 \
+	docs/man/man3/gearman_con_set_packet_unpack_fn.3 \
 	docs/man/man3/gearmand_con_create.3 \
 	docs/man/man3/gearmand_con_free.3 \
 	docs/man/man3/gearmand_con_check_queue.3 \
@@ -71,6 +96,7 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearmand_set_backlog.3 \
 	docs/man/man3/gearmand_set_threads.3 \
 	docs/man/man3/gearmand_set_log.3 \
+	docs/man/man3/gearmand_port_add.3 \
 	docs/man/man3/gearmand_run.3 \
 	docs/man/man3/gearmand_wakeup.3 \
 	docs/man/man3/gearmand_thread_create.3 \
@@ -79,6 +105,7 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearmand_thread_run.3 \
 	docs/man/man3/gearman_version.3 \
 	docs/man/man3/gearman_bugreport.3 \
+	docs/man/man3/gearman_verbose_name.3 \
 	docs/man/man3/gearman_create.3 \
 	docs/man/man3/gearman_clone.3 \
 	docs/man/man3/gearman_free.3 \
@@ -116,14 +143,18 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_packet_add_arg.3 \
 	docs/man/man3/gearman_packet_pack_header.3 \
 	docs/man/man3/gearman_packet_unpack_header.3 \
-	docs/man/man3/gearman_packet_parse.3 \
+	docs/man/man3/gearman_packet_pack.3 \
+	docs/man/man3/gearman_packet_unpack.3 \
 	docs/man/man3/gearman_packet_take_data.3 \
-	docs/man/man3/gearman_queue_libdrizzle_modconf.3 \
+	docs/man/man3/gearman_protocol_http_conf.3 \
+	docs/man/man3/gearmand_protocol_http_init.3 \
+	docs/man/man3/gearmand_protocol_http_deinit.3 \
+	docs/man/man3/gearman_queue_libdrizzle_conf.3 \
 	docs/man/man3/gearman_queue_libdrizzle_init.3 \
 	docs/man/man3/gearman_queue_libdrizzle_deinit.3 \
 	docs/man/man3/gearmand_queue_libdrizzle_init.3 \
 	docs/man/man3/gearmand_queue_libdrizzle_deinit.3 \
-	docs/man/man3/gearman_queue_libmemcached_modconf.3 \
+	docs/man/man3/gearman_queue_libmemcached_conf.3 \
 	docs/man/man3/gearman_queue_libmemcached_init.3 \
 	docs/man/man3/gearman_queue_libmemcached_deinit.3 \
 	docs/man/man3/gearmand_queue_libmemcached_init.3 \
@@ -134,6 +165,7 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_server_con_add.3 \
 	docs/man/man3/gearman_server_con_create.3 \
 	docs/man/man3/gearman_server_con_free.3 \
+	docs/man/man3/gearman_server_con_con.3 \
 	docs/man/man3/gearman_server_con_data.3 \
 	docs/man/man3/gearman_server_con_set_data.3 \
 	docs/man/man3/gearman_server_con_host.3 \
