@@ -1,10 +1,10 @@
-.TH gearman_set_queue_add 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_set_queue_add 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_set_queue_add \- Gearman Core Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIvoid gearman_set_queue_add(gearman_st " *gearman ", gearman_queue_add_fn *add_fn);"
+.BI "void gearman_set_queue_add(gearman_st " *gearman ", gearman_queue_add_fn *add_fn);"
 .SH DESCRIPTION
 Set function to call when jobs need to be stored in the persistent queue.
 .SH "SEE ALSO"

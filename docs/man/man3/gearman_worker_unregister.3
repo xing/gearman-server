@@ -1,10 +1,10 @@
-.TH gearman_worker_unregister 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_worker_unregister 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_worker_unregister \- Worker Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_return_t gearman_worker_unregister(gearman_worker_st " *worker ", const char *function_name);"
+.BI "gearman_return_t gearman_worker_unregister(gearman_worker_st " *worker ", const char *function_name);"
 .SH DESCRIPTION
 Unregister function with job servers.
 .SH "SEE ALSO"

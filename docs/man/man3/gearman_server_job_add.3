@@ -1,10 +1,10 @@
-.TH gearman_server_job_add 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_server_job_add 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_server_job_add \- Server Job Handling
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_server_job_st *gearman_server_job_add(gearman_server_st " *server ", const char " *function_name ", size_t " function_name_size ", const char " *unique ", size_t " unique_size ", const void " *data ", size_t " data_size ", gearman_job_priority_t " priority ", gearman_server_client_st " *server_client ", gearman_return_t *ret_ptr);"
+.BI "gearman_server_job_st *gearman_server_job_add(gearman_server_st " *server ", const char " *function_name ", size_t " function_name_size ", const char " *unique ", size_t " unique_size ", const void " *data ", size_t " data_size ", gearman_job_priority_t " priority ", gearman_server_client_st " *server_client ", gearman_return_t *ret_ptr);"
 .SH DESCRIPTION
 Add a new job to a server instance.
 .SH "SEE ALSO"

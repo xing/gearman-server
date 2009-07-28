@@ -1,10 +1,10 @@
-.TH gearman_server_proc_packet_remove 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_server_proc_packet_remove 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_server_proc_packet_remove \- Server Connection Handling
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_server_packet_st *gearman_server_proc_packet_remove(gearman_server_con_st *con);"
+.BI "gearman_server_packet_st *gearman_server_proc_packet_remove(gearman_server_con_st *con);"
 .SH DESCRIPTION
 Remove the first server packet structure from proc queue for a connection.
 .SH "SEE ALSO"

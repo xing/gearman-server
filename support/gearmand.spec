@@ -1,6 +1,6 @@
 Summary: Gearman Server and C Library
 Name: gearmand
-Version: 0.8
+Version: 0.9
 Release: 1
 License: BSD
 Group: System Environment/Libraries

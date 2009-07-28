@@ -1,10 +1,10 @@
-.TH gearman_packet_unpack 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_packet_unpack 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_packet_unpack \- Packet Handling
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIsize_t gearman_packet_unpack(gearman_packet_st " *packet ", gearman_con_st " *con ", const void " *data ", size_t " data_size ", gearman_return_t *ret_ptr);"
+.BI "size_t gearman_packet_unpack(gearman_packet_st " *packet ", gearman_con_st " *con ", const void " *data ", size_t " data_size ", gearman_return_t *ret_ptr);"
 .SH DESCRIPTION
 Unpack packet from input data.
 .SH "SEE ALSO"

@@ -1,10 +1,10 @@
-.TH gearman_set_workload_free 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_set_workload_free 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_set_workload_free \- Gearman Core Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIvoid gearman_set_workload_free(gearman_st " *gearman ", gearman_free_fn " *workload_free ", const void *workload_free_arg);"
+.BI "void gearman_set_workload_free(gearman_st " *gearman ", gearman_free_fn " *workload_free ", const void *workload_free_arg);"
 .SH DESCRIPTION
 Set custom memory free function for workloads. Normally gearman uses the
 standard system free to free memory used with workloads. This function

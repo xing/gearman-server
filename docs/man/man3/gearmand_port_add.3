@@ -1,10 +1,10 @@
-.TH gearmand_port_add 3 2009-07-02 "Gearman" "Gearman"
+.TH gearmand_port_add 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearmand_port_add \- Gearmand
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_return_t gearmand_port_add(gearmand_st " *gearmand ", in_port_t " port ", gearman_con_add_fn *add_fn);"
+.BI "gearman_return_t gearmand_port_add(gearmand_st " *gearmand ", in_port_t " port ", gearman_con_add_fn *add_fn);"
 .SH DESCRIPTION
 Add a port to listen on when starting server with optional callback.
 .SH PARAMETERS

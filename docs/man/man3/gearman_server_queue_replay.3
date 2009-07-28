@@ -1,10 +1,10 @@
-.TH gearman_server_queue_replay 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_server_queue_replay 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_server_queue_replay \- Server Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_return_t gearman_server_queue_replay(gearman_server_st *server);"
+.BI "gearman_return_t gearman_server_queue_replay(gearman_server_st *server);"
 .SH DESCRIPTION
 Replay the persistent queue to load all unfinshed jobs into the server. This
 should only be run at startup.

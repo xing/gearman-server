@@ -1,10 +1,10 @@
-.TH gearman_worker_add_servers 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_worker_add_servers 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_worker_add_servers \- Worker Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_return_t gearman_worker_add_servers(gearman_worker_st " *worker ", const char *servers);"
+.BI "gearman_return_t gearman_worker_add_servers(gearman_worker_st " *worker ", const char *servers);"
 .SH DESCRIPTION
 Add a list of job servers to a worker. The format for the server list is:
 SERVER[:PORT][,SERVER[:PORT]]...

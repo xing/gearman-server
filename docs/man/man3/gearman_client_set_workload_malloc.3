@@ -1,10 +1,10 @@
-.TH gearman_client_set_workload_malloc 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_client_set_workload_malloc 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_client_set_workload_malloc \- Client Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIvoid gearman_client_set_workload_malloc(gearman_client_st " *client ", gearman_malloc_fn " *workload_malloc ", const void *workload_malloc_arg);"
+.BI "void gearman_client_set_workload_malloc(gearman_client_st " *client ", gearman_malloc_fn " *workload_malloc ", const void *workload_malloc_arg);"
 .SH DESCRIPTION
 Set custom memory allocation function for workloads. Normally gearman uses
 the standard system malloc to allocate memory used with workloads. This

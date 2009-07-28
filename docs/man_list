@@ -159,6 +159,16 @@ dist_man_MANS= docs/man/man1/gearman.1 docs/man/man8/gearmand.8 \
 	docs/man/man3/gearman_queue_libmemcached_deinit.3 \
 	docs/man/man3/gearmand_queue_libmemcached_init.3 \
 	docs/man/man3/gearmand_queue_libmemcached_deinit.3 \
+	docs/man/man3/gearman_queue_libpq_conf.3 \
+	docs/man/man3/gearman_queue_libpq_init.3 \
+	docs/man/man3/gearman_queue_libpq_deinit.3 \
+	docs/man/man3/gearmand_queue_libpq_init.3 \
+	docs/man/man3/gearmand_queue_libpq_deinit.3 \
+	docs/man/man3/gearman_queue_libsqlite3_conf.3 \
+	docs/man/man3/gearman_queue_libsqlite3_init.3 \
+	docs/man/man3/gearman_queue_libsqlite3_deinit.3 \
+	docs/man/man3/gearmand_queue_libsqlite3_init.3 \
+	docs/man/man3/gearmand_queue_libsqlite3_deinit.3 \
 	docs/man/man3/gearman_server_client_add.3 \
 	docs/man/man3/gearman_server_client_create.3 \
 	docs/man/man3/gearman_server_client_free.3 \

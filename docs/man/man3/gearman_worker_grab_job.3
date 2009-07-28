@@ -1,10 +1,10 @@
-.TH gearman_worker_grab_job 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_worker_grab_job 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_worker_grab_job \- Worker Interface
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_job_st *gearman_worker_grab_job(gearman_worker_st " *worker ", gearman_job_st " *job ", gearman_return_t *ret_ptr);"
+.BI "gearman_job_st *gearman_worker_grab_job(gearman_worker_st " *worker ", gearman_job_st " *job ", gearman_return_t *ret_ptr);"
 .SH DESCRIPTION
 Get a job from one of the job servers.
 .SH "SEE ALSO"

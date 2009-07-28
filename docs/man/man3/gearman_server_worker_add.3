@@ -1,10 +1,10 @@
-.TH gearman_server_worker_add 3 2009-07-02 "Gearman" "Gearman"
+.TH gearman_server_worker_add 3 2009-07-19 "Gearman" "Gearman"
 .SH NAME
 gearman_server_worker_add \- Server Worker Handling
 .SH SYNOPSIS
 .B #include <libgearman/gearman.h>
 .sp
-.BI "GEARMAN_APIgearman_server_worker_st *gearman_server_worker_add(gearman_server_con_st " *con ", const char " *function_name ", size_t " function_name_size ", uint32_t timeout);"
+.BI "gearman_server_worker_st *gearman_server_worker_add(gearman_server_con_st " *con ", const char " *function_name ", size_t " function_name_size ", uint32_t timeout);"
 .SH DESCRIPTION
 Add a new worker to a server instance.
 .SH "SEE ALSO"
